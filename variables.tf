@@ -82,3 +82,15 @@ variable "deduplication_scope" {
   type        = string
   description = "Specifies whether message deduplication occurs at the message group or queue level"
 }
+
+variable "event_source_mapping_enabled" {
+  description = "Whether the event source mapping is active. Set to true to enable."
+  type        = bool
+  default     = true
+}
+
+variable "event_source_batch_size" {
+  description = "The maximum number of records to send to the Lambda function for each batch."
+  type        = number
+  default     = 1
+}

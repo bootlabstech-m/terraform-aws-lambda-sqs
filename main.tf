@@ -100,7 +100,7 @@ resource "aws_sqs_queue" "terraform_queue" {
 # Event source from SQS
 resource "aws_lambda_event_source_mapping" "event_source_mapping" {
   event_source_arn = aws_sqs_queue.terraform_queue.arn
-  enabled          = true
+  enabled          = var.event_source_mapping_enabled
   function_name    = aws_lambda_function.terraform_lambda_func.arn
-  batch_size       = 1
+  batch_size       = var.event_source_batch_size
 }
